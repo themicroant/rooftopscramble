@@ -1,15 +1,15 @@
    import java.applet.*;
    import java.awt.*;
-import java.awt.event.*;
+   import java.awt.event.*;
 
 
     public class Main extends Applet implements Runnable
    {
     	// to appease Eclipse
-		private static final long serialVersionUID = 1L;
-		
-		
-	private volatile Thread thread;
+      private static final long serialVersionUID = 1L;
+   	
+   	
+      private volatile Thread thread;
       private int width;
       private int height;
       private Player player;
@@ -41,13 +41,13 @@ import java.awt.event.*;
    
        public void init()
       {
-    	 resize(WIDTH, HEIGHT);
+         resize(WIDTH, HEIGHT);
          width = getWidth();
          height = getHeight();
          player = new Player(width/2, height/2);
+         player.setImage(getImage(getDocumentBase(), "Jet.JPG"));
          enemy = new Enemy( 127, 117);
          shots = new Shot[5];
-         jetImage = getImage( getDocumentBase(), "Jet.JPG" );
          city = getImage( getDocumentBase(), "city.JPG" );		
          
       }
@@ -123,8 +123,8 @@ import java.awt.event.*;
                {
                // do nothing
                }
-                enemy.chase(player.getX());
-                enemy.diagonal(1, 1);
+            enemy.chase(player.getX());
+            enemy.diagonal(1, 1);
                 
          // repaint applet
             repaint();
@@ -157,8 +157,8 @@ import java.awt.event.*;
          }
          else
          {
-        	 test = true;
-        	 errString = key + "";
+            test = true;
+            errString = key + "";
          }
       
          return true;
@@ -209,37 +209,37 @@ import java.awt.event.*;
       
       // draw player
       //player.drawPlayer(g, jetImage);
-         g.drawImage(jetImage, player.getX()-26, player.getY()-35, this );
+         g.drawImage(player.getImage(), player.getX()-26, player.getY()-35, this );
          enemy.drawEnemy(g);
          drawUI(g);
          
          if(true){
-        	 drawErr(g);
+            drawErr(g);
          }
       
          distanceMoved--;
          distanceMoved=distanceMoved%WIDTH;
       }
        
-   	public void drawUI(Graphics g){
-		int textX = 500;
-		int textY = 430;
-		
-		g.setColor(Color.BLACK);
-		g.setFont(new Font("Arial", Font.BOLD, 20 ));
-		
-		String life = player.getLifeText();
-		g.drawChars(life.toCharArray(),0,life.length(),textX,textY);
-		
-		String weap = player.getWeapText();
-		g.drawChars(weap.toCharArray(),0,weap.length(),textX,textY+25);
-
-	}
+       public void drawUI(Graphics g){
+         int textX = 500;
+         int textY = 430;
+      
+         g.setColor(Color.BLACK);
+         g.setFont(new Font("Arial", Font.BOLD, 20 ));
+      
+         String life = player.getLifeText();
+         g.drawChars(life.toCharArray(),0,life.length(),textX,textY);
+      
+         String weap = player.getWeapText();
+         g.drawChars(weap.toCharArray(),0,weap.length(),textX,textY+25);
+      
+      }
    	
-   	public void drawErr(Graphics g)
-   	{
-   		g.drawChars(errString.toCharArray(),0,errString.length(),200,200);
-   	}
-
+       public void drawErr(Graphics g)
+      {
+         g.drawChars(errString.toCharArray(),0,errString.length(),200,200);
+      }
+   
    	
    }

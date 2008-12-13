@@ -6,7 +6,7 @@
       private int y_pos;
       private int width;
       private int height;
-		private Image img;
+      private Image img;
       
        public int getX()
       {
@@ -18,18 +18,23 @@
          return y_pos;
       }
       
-   	  public int getwidth()
+       public int getwidth()
       {
          return width;
       }
       
-   	  public int getheight()
+       public int getheight()
       {
          return height;
       }
-		
-		public void setImage(Image i)
-		{
-		img = i;
-		}
+   	
+       public Image getImage()
+      {
+         return img;
+      }
+   	
+       public void setImage(Image i)
+      {
+         img = i;
+      }
    }
