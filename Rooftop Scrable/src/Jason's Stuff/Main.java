@@ -100,8 +100,26 @@
                
                }
                
-               checkCollisions();	
+               	
             }
+            
+            checkCollisions();   
+         	
+            Rectangle playerBounds = player.getBounds();
+            boolean fall = true;
+           
+            for (int j = 0; j < EArray.size(); j++) {
+               Entity a2 = EArray.get(j);
+               Rectangle r2 = a2.getBounds();
+               if (playerBounds.intersects(r2)) {
+                  if(a2 instanceof Building)
+                     fall=false;
+               }
+            }
+                     
+            if(fall)
+               player.moveY(1);
+         
          
             if(LEFT){
             

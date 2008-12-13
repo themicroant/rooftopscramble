@@ -6,8 +6,8 @@ public class Building extends Entity
 	{
 		x_pos = x;
 		y_pos = y;
-		width = 45;
-		height = 1;
+		width = 500;
+		height = 2;
 	}
 
 }
