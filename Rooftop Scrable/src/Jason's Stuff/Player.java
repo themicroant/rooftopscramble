@@ -9,7 +9,19 @@
     
       private int life;
       private int weapNum;
-   
+		
+		public int PSTATE = 0;
+		
+		
+		/*
+		
+		0=stand
+		1=run
+		2=jump
+		3=fall
+		
+		*/
+		   
        public Player(int x, int y)
       {
          x_pos = x;
@@ -63,9 +75,4 @@
          return shot;
       }
    
-      // draw the player
-      //public void drawPlayer(Graphics g, Image jet)
-      //{
-    	  
-      //}
    }
