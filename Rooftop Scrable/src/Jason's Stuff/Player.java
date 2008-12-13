@@ -1,4 +1,3 @@
-
 public class Player extends Entity
 {
 	private final int LIFE_MAX = 10;
@@ -10,7 +9,7 @@ public class Player extends Entity
 
 	/*
 	 * 
-	 * 0=stand 1=run 2=jump 3=fall
+	 * 0=stand 1=run 2=jump 3=fall 4=die
 	 */
 
 	public Player(int x, int y)
@@ -19,7 +18,7 @@ public class Player extends Entity
 		y_pos = y;
 		width = 45;
 		height = 45;
-		
+
 		life = 10;
 		weapNum = 1;
 	}
@@ -27,6 +26,11 @@ public class Player extends Entity
 	public String getLifeText()
 	{
 		return "LIFE " + life + "/" + LIFE_MAX;
+	}
+
+	public void takeDamage(int damage)
+	{
+		life -= damage;
 	}
 
 	public String getWeapText()
@@ -43,12 +47,6 @@ public class Player extends Entity
 	public void moveX(int speed)
 	{
 		x_pos += speed;
-	}
-
-	// move spaceship in x - direction
-	public void moveY(int speed)
-	{
-		y_pos += speed;
 	}
 
 	public void jump()
