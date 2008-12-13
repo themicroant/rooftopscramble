@@ -46,7 +46,7 @@
          resize(WIDTH, HEIGHT);
          width = getWidth();
          height = getHeight();
-         player = new Player(width/2, height/2);
+         player = new Player(width/2, 400);
          player.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white));
          EArray.add(player);
          
@@ -88,7 +88,7 @@
                {
                   shots[i].moveShot(-SHOT_SPEED);
                
-                  if(shots[i].getYPos() < 0)
+                  if(shots[i].getXPos() > 640)
                   {
                      shots[i] = null;
                   } 
@@ -146,6 +146,10 @@
          else if(key == Event.RIGHT)
          {
             playerMoveRight = true;
+         }
+         else if(key == Event.UP)
+         {
+        	 player.jump();
          }
          else if(key == 32 )//Spacebar
          {
@@ -232,16 +236,11 @@
       
          distanceMoved--;
          distanceMoved=distanceMoved%WIDTH;
-         
-         if(test){
-            g.setColor(Color.RED);
-            g.drawChars(errString.toCharArray(),0,errString.length(),0,100);
-         }
       }
        
        public void drawUI(Graphics g){
-         int textX = 500;
-         int textY = 430;
+         int textX = 10;
+         int textY = 20;
       
          g.setColor(Color.BLACK);
          g.setFont(new Font("Arial", Font.BOLD, 20 ));
