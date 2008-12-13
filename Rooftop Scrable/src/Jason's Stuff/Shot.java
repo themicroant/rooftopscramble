@@ -1,30 +1,37 @@
-
 import java.awt.Graphics;
 import java.awt.Color;
 
 public class Shot extends Entity
 {
 
+	private int radius; // size of the shot
 	private Color color; // color of shot
-	private int radius = 8; // size of the shot
+	private int speed; // speed of shot
 
 	// Constructor
 	public Shot(int x, int y, int type)
 	{
 		if (type == 1) {
 			radius = 8;
-			color = Color.BLACK;
+			color = Color.GREEN;
+			speed = 5;
+
 		} else if (type == 2) {
 			radius = 12;
 			color = Color.RED;
+			speed = 4;
+
 		} else if (type == 3) {
 			radius = 4;
 			color = Color.BLUE;
+			speed = 6;
+
 		} else {
 			radius = 8;
 			color = Color.WHITE;
+			speed = 5;
 		}
-		
+
 		x_pos = x;
 		y_pos = y;
 		width = radius;
@@ -34,7 +41,7 @@ public class Shot extends Entity
 	// moving shot in y direction
 	public void tick()
 	{
-		x_pos += 5;
+		x_pos += speed;
 	}
 
 	// draw the shot to the screen
