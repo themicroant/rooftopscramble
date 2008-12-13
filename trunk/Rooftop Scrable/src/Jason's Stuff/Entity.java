@@ -13,9 +13,9 @@ public abstract class Entity
 		return x_pos;
 	}
 
-	public void setX(int x)
+	public void moveX(int inc)
 	{
-		x_pos = x;
+		x_pos += inc;
 	}
 
 	public int getY()
@@ -23,9 +23,9 @@ public abstract class Entity
 		return y_pos;
 	}
 
-	public void setY(int y)
+	public void moveY(int inc)
 	{
-		y_pos = y;
+		y_pos += inc;
 	}
 
 	public int getwidth()
