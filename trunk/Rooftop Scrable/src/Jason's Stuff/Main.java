@@ -45,7 +45,7 @@
          width = getWidth();
          height = getHeight();
          player = new Player(width/2, height/2);
-         player.setImage(getImage(getDocumentBase(), "Jet.JPG"));
+         player.setImage(getImage(getDocumentBase(), "megagirl_standing.JPG"));
          enemy = new Enemy( 127, 117);
          shots = new Shot[5];
          city = getImage( getDocumentBase(), "city.JPG" );		
