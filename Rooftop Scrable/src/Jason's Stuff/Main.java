@@ -95,15 +95,7 @@
                
                }
                
-            	
-            	
-            	
-            	
-            	
-            	
-            	
-            	
-            	
+            	checkCollisions();	
             }
          
          

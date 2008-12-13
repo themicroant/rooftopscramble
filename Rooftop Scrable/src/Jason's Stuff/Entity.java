@@ -44,8 +44,7 @@
       
        public void collision(Entity a) {
          if (a instanceof Enemy)
-            System.out.println("hit building");
-          System.out.println("hit");
+            System.out.println("hit enemy");
       }
    
    
