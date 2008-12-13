@@ -1,5 +1,7 @@
    import java.applet.*;
    import java.awt.*;
+   import java.awt.event.*;
+
 
     public class Main extends Applet implements Runnable
    {
@@ -16,6 +18,11 @@
       private int distanceMoved = 0;
       private final int WIDTH = 640;
       private final int HEIGHT = 480;
+      
+      
+      //TESTING 
+      private boolean test = false;
+      private String errString = "";
    
    // constants
       private int PLAYER_SPEED = 3;
@@ -135,14 +142,6 @@
          {
             playerMoveRight = true;
          }
-         else if(key == 1)
-         {
-            player.setWeap(1);
-         }
-         else if(key == Event.RIGHT)
-         {
-            playerMoveRight = true;
-         }
          else if(key == 32 )
          {
          // generate new shot and add it to shots array
@@ -172,6 +171,14 @@
       
          return true;
       }
+       
+       protected void processKeyEvent(KeyEvent e)
+       {
+    	   //e.toString());
+    	   
+    	   
+    	   
+       }
    
        public void update (Graphics g)
       {
@@ -207,6 +214,10 @@
          g.drawImage(jetImage, player.getX()-26, player.getY()-35, this );
          enemy.drawEnemy(g);
          drawUI(g);
+         
+         if(test){
+        	 drawErr(g);
+         }
       
          distanceMoved--;
          distanceMoved=distanceMoved%WIDTH;
@@ -226,5 +237,10 @@
 		g.drawChars(weap.toCharArray(),0,weap.length(),textX,textY+25);
 
 	}
+   	
+   	public void drawErr(Graphics g)
+   	{
+   		g.drawChars(errString.toCharArray(),0,errString.length(),200,200);
+   	}
    	
    }
