@@ -55,7 +55,7 @@ public class Player extends Entity
       // generate a shot at the current position of the spaceship
       // and return this shot to the calling method
       public Shot generateShot() {
-            Shot shot = new Shot(x_pos, y_pos);
+            Shot shot = new Shot(x_pos, y_pos, weapNum);
             return shot;
       }
 

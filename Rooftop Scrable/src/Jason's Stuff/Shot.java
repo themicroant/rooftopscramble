@@ -6,15 +6,27 @@ public class Shot
 
       private int x_pos;
       private int y_pos;
-
-      // size of the shot
-      private static final int RADIS = 8;
+      private Color color;		// color of shot
+      private int radius = 8;	// size of the shot
 
       // Constructor
-      public Shot(int x, int y)
+      public Shot(int x, int y, int type)
       {
             x_pos = x;
             y_pos = y;
+            if( type == 1){
+            	radius = 8;
+            	color = Color.BLACK;
+            } else if ( type == 2){
+            	radius = 12;
+            	color = Color.RED;
+            } else if ( type == 3){
+            	radius = 4;
+            	color = Color.BLUE;
+            } else {
+            	radius = 8;
+            	color = Color.WHITE;
+            }
       }
 
       // returns y position, needed for testing if shot has left the game area
@@ -32,7 +44,11 @@ public class Shot
       // draw the shot to the screen
       public void drawShot(Graphics g)
       {
-            g.setColor(Color.black);
-            g.fillOval(x_pos-(RADIS/2), y_pos-(RADIS/2), RADIS, RADIS);
+
+    	 g.setColor(color);
+    	 g.fillOval(x_pos-(radius/2), y_pos-(radius/2), radius, radius);
+    	  
+    		  
+            
       }
 } 

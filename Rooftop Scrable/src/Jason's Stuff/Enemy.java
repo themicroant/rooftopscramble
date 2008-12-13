@@ -67,7 +67,7 @@ public abstract class Enemy extends Entity
       // and return this shot to the calling method
       public Shot generateShot()
       {
-            Shot shot = new Shot(x_pos, y_pos);
+            Shot shot = new Shot(x_pos, y_pos, 1);
 
             return shot;
       }
