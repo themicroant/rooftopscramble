@@ -6,6 +6,7 @@
       private int y_pos;
       private int width;
       private int height;
+		private Image img;
       
        public int getX()
       {
@@ -26,8 +27,13 @@
       {
          return height;
       }
+		
+		public void setImage(Image i)
+		{
+		img = i;
+		}
    	  
-   	  public abstract void draw();
+   	  public abstract void draw(Graphics g);
       
    	  public abstract void update();   	
    }
