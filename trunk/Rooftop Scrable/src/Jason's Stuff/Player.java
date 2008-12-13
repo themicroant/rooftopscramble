@@ -22,6 +22,11 @@ public class Player extends Entity
 		life = 10;
 		weapNum = 1;
 	}
+	
+	public int getLife()
+	{
+		return life;
+	}
 
 	public String getLifeText()
 	{
@@ -30,12 +35,10 @@ public class Player extends Entity
 
 	public void takeDamage(int damage)
 	{
+		life -= damage;
+		
 		if (life <= 0) {
 			life = 0;
-			System.out.println("DEAD");
-			
-		} else {
-			life -= damage;
 		}
 	}
 
