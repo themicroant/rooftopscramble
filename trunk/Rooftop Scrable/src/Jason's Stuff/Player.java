@@ -30,7 +30,13 @@ public class Player extends Entity
 
 	public void takeDamage(int damage)
 	{
-		life -= damage;
+		if (life <= 0) {
+			life = 0;
+			System.out.println("DEAD");
+			
+		} else {
+			life -= damage;
+		}
 	}
 
 	public String getWeapText()
@@ -41,12 +47,6 @@ public class Player extends Entity
 	public void setWeap(int weapNum)
 	{
 		this.weapNum = weapNum;
-	}
-
-	// move spaceship in x - direction
-	public void moveX(int speed)
-	{
-		x_pos += speed;
 	}
 
 	public void jump()
