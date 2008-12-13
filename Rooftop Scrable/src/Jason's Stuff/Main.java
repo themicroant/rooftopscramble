@@ -56,7 +56,8 @@
          
          enemy = new BirdEnemy[1];
          for(int i = 0; i < 1;i++) {
-            enemy[i] = new BirdEnemy(127, 117);
+            enemy[i] = new BirdEnemy(600, 0);
+            enemy[i].setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "my_bird.gif"),new Color(0).white));
             EArray.add(enemy[i]);
          }
          shots = new Shot[5];
