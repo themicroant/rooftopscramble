@@ -3,7 +3,7 @@ import java.awt.Color;
 
 public abstract class Enemy extends Entity
 {
-       private int speed = 1;
+       protected int speed = 1;
       boolean diagonal = true;
       // size of the enemy
       private static final int RADIS = 30;
@@ -27,7 +27,7 @@ public abstract class Enemy extends Entity
       }
 
       // move spaceship in x - direction
-      public void moveX(int speed)
+      public void moveX()
       {
     	  x_pos += speed;
       }
