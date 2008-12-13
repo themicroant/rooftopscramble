@@ -30,15 +30,15 @@ public class Shot
       }
 
       // returns y position, needed for testing if shot has left the game area
-      public int getYPos()
+      public int getXPos()
       {
-            return y_pos;
+            return x_pos;
       }
 
       // moving shot in y direction
       public void moveShot(int speed)
       {
-            y_pos += speed;
+            x_pos -= speed;
       }
 
       // draw the shot to the screen

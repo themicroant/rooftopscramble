@@ -51,6 +51,10 @@
        public void moveY(int speed) {
          y_pos += speed;
       }
+       
+       public void jump(){
+    	   
+       }
    
       // generate a shot at the current position of the spaceship
       // and return this shot to the calling method
