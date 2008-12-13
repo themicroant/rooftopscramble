@@ -128,6 +128,7 @@
          if(key == Event.LEFT)
          {
             for(Entity EN : EArray) {
+               if(!(EN instanceof Player))
                EN.moveX(-PLAYER_SPEED);
             }
          	
@@ -136,6 +137,7 @@
          else if(key == Event.RIGHT)
          {            
             for(Entity EN : EArray) {
+            if(!(EN instanceof Player))
                EN.moveX(PLAYER_SPEED);
             }
          	
