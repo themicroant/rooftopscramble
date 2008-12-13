@@ -139,35 +139,46 @@
       }
    
        public boolean keyDown(Event e, int key)
-      {
-         if(key == Event.LEFT)
-         {
-            playerMoveLeft = true;
-         }
-         else if(key == Event.RIGHT)
-         {
-            playerMoveRight = true;
-         }
-         else if(key == 32 )
-         {
-         // generate new shot and add it to shots array
-            for(int i=0; i<shots.length; i++)
-            {
-               if(shots[i] == null)
-               {
-                  shots[i] = player.generateShot();
-                  break;
-               }
-            }
-         }
-         else
-         {
-            test = true;
-            errString = key + "";
-         }
-      
-         return true;
-      }
+       {
+          if(key == Event.LEFT)
+          {
+             playerMoveLeft = true;
+          }
+          else if(key == Event.RIGHT)
+          {
+             playerMoveRight = true;
+          }
+          else if(key == 32 )//Spacebar
+          {
+          // generate new shot and add it to shots array
+             for(int i=0; i<shots.length; i++)
+             {
+                if(shots[i] == null)
+                {
+                   shots[i] = player.generateShot();
+                   break;
+                }
+             }
+          }
+          else if(key == 49)// 1
+          {
+             player.setWeap(1);
+          }
+          else if(key == 50)// 2
+          {
+         	 player.setWeap(2);
+          }
+          else if(key == 51)// 3
+          {
+         	 player.setWeap(3);
+          }
+          else
+          {
+         	 errString = key + "";
+          }
+       
+          return true;
+       }
    
        public boolean keyUp(Event e, int key)
       {
@@ -219,13 +230,14 @@
         	 e.draw(g);
          }
          drawUI(g);
-         
-         if(true){
-            drawErr(g);
-         }
       
          distanceMoved--;
          distanceMoved=distanceMoved%WIDTH;
+         
+         if(test){
+        	 g.setColor(Color.RED);
+        	 g.drawChars(errString.toCharArray(),0,errString.length(),0,100);
+         }
       }
        
        public void drawUI(Graphics g){
@@ -242,11 +254,5 @@
          g.drawChars(weap.toCharArray(),0,weap.length(),textX,textY+25);
       
       }
-   	
-       public void drawErr(Graphics g)
-      {
-         g.drawChars(errString.toCharArray(),0,errString.length(),200,200);
-      }
-   
    	
    }
