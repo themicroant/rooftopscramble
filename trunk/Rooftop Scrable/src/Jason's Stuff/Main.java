@@ -1,6 +1,6 @@
    import java.applet.*;
    import java.awt.*;
-   import java.awt.event.*;
+import java.awt.event.*;
 
 
     public class Main extends Applet implements Runnable
@@ -49,6 +49,7 @@
          shots = new Shot[5];
          jetImage = getImage( getDocumentBase(), "Jet.JPG" );
          city = getImage( getDocumentBase(), "city.JPG" );		
+         
       }
    
        public void start ()
@@ -154,6 +155,11 @@
                }
             }
          }
+         else
+         {
+        	 test = true;
+        	 errString = key + "";
+         }
       
          return true;
       }
@@ -171,14 +177,6 @@
       
          return true;
       }
-       
-       protected void processKeyEvent(KeyEvent e)
-       {
-    	   //e.toString());
-    	   
-    	   
-    	   
-       }
    
        public void update (Graphics g)
       {
@@ -215,7 +213,7 @@
          enemy.drawEnemy(g);
          drawUI(g);
          
-         if(test){
+         if(true){
         	 drawErr(g);
          }
       
@@ -242,5 +240,6 @@
    	{
    		g.drawChars(errString.toCharArray(),0,errString.length(),200,200);
    	}
+
    	
    }
