@@ -184,6 +184,10 @@
          {
             player.setWeap(3);
          }
+         else if(key == 52)// 4 used for testing takeDamage
+         {
+            player.takeDamage(1);
+         }
        
          return true;
       }
