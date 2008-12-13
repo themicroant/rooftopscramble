@@ -21,20 +21,12 @@
       private final int WIDTH = 640;
       private final int HEIGHT = 480;
       
-      
-      //TESTING 
-      private boolean test = false;
-      private String errString = "";
-   
    // constants
       private int PLAYER_SPEED = 3;
-      private int SHOT_SPEED = 5;
    
    // move flags
       private boolean playerMoveLeft;
       private boolean playerMoveRight;
-      private boolean playerMoveUp;
-      private boolean playerMoveDown;
    
    // double buffering
       private Image dbImage;
@@ -86,9 +78,9 @@
             {
                if(shots[i] != null)
                {
-                  shots[i].moveShot(-SHOT_SPEED);
+                  shots[i].tick();
                
-                  if(shots[i].getXPos() > 640)
+                  if(shots[i].getX() > 640)
                   {
                      shots[i] = null;
                   } 
@@ -98,7 +90,6 @@
             	checkCollisions();	
             }
          
-         
          // move player
             if(playerMoveLeft && player.getX() > 0)
             {		
@@ -107,14 +98,6 @@
             else if(playerMoveRight && player.getX() < width)
             {
                player.moveX(PLAYER_SPEED);
-            }
-            if(playerMoveUp && player.getY() > 0)
-            {
-               player.moveY(-PLAYER_SPEED);
-            }
-            else if(playerMoveDown && player.getY() < height)
-            {
-               player.moveY(PLAYER_SPEED);
             }
          
             try
@@ -174,10 +157,6 @@
          else if(key == 51)// 3
          {
             player.setWeap(3);
-         }
-         else
-         {
-            errString = key + "";
          }
        
          return true;

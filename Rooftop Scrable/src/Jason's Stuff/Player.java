@@ -53,7 +53,7 @@
       }
        
        public void jump(){
-    	   
+    	   System.out.println("jump");
        }
    
       // generate a shot at the current position of the spaceship
