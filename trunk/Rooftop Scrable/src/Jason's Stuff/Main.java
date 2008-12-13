@@ -128,14 +128,6 @@
          {
             playerMoveRight = true;
          }
-         else if(key == Event.UP)
-         {
-            playerMoveUp = true;
-         }
-         else if(key == Event.DOWN)
-         {
-            playerMoveDown = true;
-         }
          else if(key == 32 )
          {
          // generate new shot and add it to shots array
@@ -161,14 +153,6 @@
          else if(key == Event.RIGHT)
          {
             playerMoveRight = false;
-         }
-         else if(key == Event.UP)
-         {
-            playerMoveUp = false;
-         }
-         else if(key == Event.DOWN)
-         {
-            playerMoveDown = false;
          }
       
          return true;
@@ -207,8 +191,25 @@
       //player.drawPlayer(g, jetImage);
          g.drawImage(jetImage, player.getX()-26, player.getY()-35, this );
          enemy.drawEnemy(g);
+         drawUI(g);
       
          distanceMoved--;
          distanceMoved=distanceMoved%WIDTH;
       }
+       
+   	public void drawUI(Graphics g){
+		int textX = 500;
+		int textY = 430;
+		
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Arial", Font.BOLD, 20 ));
+		
+		String life = player.getLifeText();
+		g.drawChars(life.toCharArray(),0,life.length(),textX,textY);
+		
+		String weap = "1-GUN";
+		g.drawChars(weap.toCharArray(),0,weap.length(),textX,textY+25);
+
+	}
+   	
    }

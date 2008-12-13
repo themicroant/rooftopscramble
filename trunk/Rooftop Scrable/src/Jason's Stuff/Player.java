@@ -5,11 +5,14 @@ public class Player
 {
       private int x_pos;
       private int y_pos;
+      private int life;
+      private final int LIFE_MAX = 10;
 
       public Player(int x, int y)
       {
             x_pos = x;
             y_pos = y;
+            life = 10;
       }
       
       public int getX()
@@ -20,6 +23,11 @@ public class Player
       public int getY()
       {
     	  return y_pos;
+      }
+      
+      public String getLifeText()
+      {
+    	  return "LIFE " + life + "/" + LIFE_MAX;
       }
 
       // move spaceship in x - direction
