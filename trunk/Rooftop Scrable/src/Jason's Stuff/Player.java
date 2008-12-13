@@ -63,6 +63,7 @@ public class Player extends Entity
 
             return shot;
       }
+	
 
       // draw the player
       //public void drawPlayer(Graphics g, Image jet)
