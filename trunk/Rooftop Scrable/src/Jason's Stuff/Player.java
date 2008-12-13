@@ -29,6 +29,11 @@ public class Player
       {
     	  return "LIFE " + life + "/" + LIFE_MAX;
       }
+      
+      public String getWeapText()
+      {
+    	  return "1-Gun";
+      }
 
       // move spaceship in x - direction
       public void moveX(int speed)

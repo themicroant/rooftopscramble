@@ -3,7 +3,11 @@
 
     public class Main extends Applet implements Runnable
    {
-      private volatile Thread thread;
+    	// to appease Eclipse
+		private static final long serialVersionUID = 1L;
+		
+		
+	private volatile Thread thread;
       private int width;
       private int height;
       private Player player;
@@ -112,6 +116,7 @@
                // do nothing
                }
                 enemy.chase(player.getX());
+                enemy.diagonal(1, 1);
                 
          // repaint applet
             repaint();
@@ -209,7 +214,7 @@
 		String life = player.getLifeText();
 		g.drawChars(life.toCharArray(),0,life.length(),textX,textY);
 		
-		String weap = "1-GUN";
+		String weap = player.getWeapText();
 		g.drawChars(weap.toCharArray(),0,weap.length(),textX,textY+25);
 
 	}
