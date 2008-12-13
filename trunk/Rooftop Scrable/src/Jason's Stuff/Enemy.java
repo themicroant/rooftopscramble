@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class Enemy
+public class Enemy extends Entity
 {
       private int x_pos;
       private int y_pos;

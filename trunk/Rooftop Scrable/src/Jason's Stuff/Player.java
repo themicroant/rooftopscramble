@@ -1,18 +1,21 @@
 //import java.awt.Graphics;
 //import java.awt.Image;
 
-public class Player
+public class Player extends Entity
 {
+    private final int LIFE_MAX = 10;
+    
       private int x_pos;
       private int y_pos;
       private int life;
-      private final int LIFE_MAX = 10;
+      private int weapNum;
 
       public Player(int x, int y)
       {
             x_pos = x;
             y_pos = y;
             life = 10;
+            weapNum = 1;
       }
       
       public int getX()
@@ -32,7 +35,12 @@ public class Player
       
       public String getWeapText()
       {
-    	  return "1-Gun";
+    	  return "Gun# " + weapNum;
+      }
+      
+      public void setWeap(int weapNum)
+      {
+    	  this.weapNum = weapNum;
       }
 
       // move spaceship in x - direction

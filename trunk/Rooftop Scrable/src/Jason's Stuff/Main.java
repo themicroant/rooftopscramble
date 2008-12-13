@@ -135,6 +135,14 @@
          {
             playerMoveRight = true;
          }
+         else if(key == 1)
+         {
+            player.setWeap(1);
+         }
+         else if(key == Event.RIGHT)
+         {
+            playerMoveRight = true;
+         }
          else if(key == 32 )
          {
          // generate new shot and add it to shots array
