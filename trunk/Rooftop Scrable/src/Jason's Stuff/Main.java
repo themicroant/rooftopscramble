@@ -13,7 +13,7 @@
       private int width;
       private int height;
       private Player player;
-      private Enemy enemy;
+      private Enemy[] enemy;
       private Shot[] shots;
       private int distanceMoved = 0;
       private final int WIDTH = 640;
@@ -46,7 +46,10 @@
          height = getHeight();
          player = new Player(width/2, height/2);
          player.setImage(getImage(getDocumentBase(), "megagirl_standing.gif"));
-         enemy = new Enemy( 127, 117);
+         enemy = new Enemy[1];
+         for(Enemy e : enemy) {
+        	 e = new BirdEnemy(127, 117);
+         }
          shots = new Shot[5];
          city = getImage( getDocumentBase(), "city.JPG" );		
          
@@ -123,8 +126,10 @@
                {
                // do nothing
                }
-            enemy.chase(player.getX());
-            enemy.diagonal(1, 1);
+                
+               for(Enemy e : enemy) {
+            	   e.move(player.getX(), player.getY());
+               }
                 
          // repaint applet
             repaint();
@@ -210,7 +215,9 @@
       // draw player
       //player.drawPlayer(g, jetImage);
          g.drawImage(player.getImage(), player.getX()-26, player.getY()-35, this );
-         enemy.drawEnemy(g);
+         for(Enemy e : enemy) {
+        	 e.draw(g);
+         }
          drawUI(g);
          
          if(true){

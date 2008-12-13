@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class Enemy extends Entity
+public abstract class Enemy extends Entity
 {
       private int x_pos;
       private int y_pos;
@@ -37,7 +37,8 @@ public class Enemy extends Entity
       {
             y_pos += speed;
       }
-
+      public abstract void move(int x, int y);
+      
       public void chase(int x) {
     	  	if(x < x_pos) {
     	  		x_pos -= speed;
@@ -71,10 +72,10 @@ public class Enemy extends Entity
             return shot;
       }
 
-      // draw the enemy
-      public void drawEnemy( Graphics g)
-      {
-    	  g.setColor(Color.RED);
-    	  g.fillRect(x_pos-(RADIS/2), y_pos-(RADIS/2), RADIS, RADIS);
-      }
+	  public void draw(Graphics g) {
+		g.setColor(Color.RED);
+   	  	g.fillRect(x_pos-(RADIS/2), y_pos-(RADIS/2), RADIS, RADIS);	
+	  }
+
+	
 } 
