@@ -59,7 +59,7 @@
       // generate a shot at the current position of the spaceship
       // and return this shot to the calling method
        public Shot generateShot() {
-         Shot shot = new Shot(x_pos, y_pos, weapNum);
+         Shot shot = new Shot(x_pos + (width/2), y_pos + (height/2), weapNum);
          return shot;
       }
    

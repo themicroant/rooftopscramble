@@ -11,9 +11,6 @@ public class Shot extends Entity
 	// Constructor
 	public Shot(int x, int y, int type)
 	{
-		x_pos = x;
-		y_pos = y;
-		
 		if (type == 1) {
 			radius = 8;
 			color = Color.BLACK;
@@ -27,6 +24,11 @@ public class Shot extends Entity
 			radius = 8;
 			color = Color.WHITE;
 		}
+		
+		x_pos = x;
+		y_pos = y;
+		width = radius;
+		height = radius;
 	}
 
 	// moving shot in y direction
