@@ -6,14 +6,14 @@ public class BirdEnemy extends Enemy {
 	 */
 	public BirdEnemy(int x, int y) {
 		super(x, y);
-		speed = 2;
+		speed = 1;
 	}
 	
 	public void move(int x, int y) {
-		if(x >= x_pos) {
+		if(y >= y_pos) {
 			int distance = x_pos - x;
 			chase(x);
-			diagonal(-(int)Math.signum(distance), 1);
+			diagonal((int)Math.signum(distance), 1);
 		}
 		
 	}
