@@ -22,6 +22,8 @@
       private final int WIDTH = 640;
       private final int HEIGHT = 480;
       
+      private int gameState = 1;
+      
    // constants
       private int PLAYER_SPEED = 3;
    
@@ -223,6 +225,10 @@
       
          return true;
       }
+       
+       public void setGameState( int state ){
+    	   gameState = state;
+       }
    
        public void update (Graphics g)
       {
@@ -241,16 +247,17 @@
    
        public void paint (Graphics g)
       {    
+    	   if( player.getLife() == 0)
+    	   {
+    		   gameState = 2;
+    	   }
+    		   
+    	   if( gameState == 1)
+    	   {
          g.drawImage(city, WIDTH+distanceMoved, 0, WIDTH, HEIGHT, this );
          g.drawImage(city, distanceMoved, 0, WIDTH, HEIGHT, this );
       
-      
-      
-      // draw player
-      //player.drawPlayer(g, jetImage);
-      
-      
-      
+
          for(Entity e : EArray) {
             g.drawImage(e.getImage(), e.getX(), e.getY(), this );
          }
@@ -269,6 +276,17 @@
       
          distanceMoved--;
          distanceMoved=distanceMoved%WIDTH;
+         
+    	   } else {
+    		   g.setColor(Color.BLACK);
+    		   g.fillRect(0, 0, WIDTH, HEIGHT);
+    		   
+    		   g.setColor(Color.WHITE);
+    		   String msg = "GAME OVER";
+    		   g.drawChars(msg.toCharArray(), 0, msg.length(), 300, 200);
+    		   
+    		   
+    	   }
       }
        
        public void drawUI(Graphics g){
