@@ -6,12 +6,16 @@ public class BirdEnemy extends Enemy {
 	 */
 	public BirdEnemy(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
+		speed = 2;
 	}
 	
 	public void move(int x, int y) {
-		chase(x);
-		diagonal(1, 1);
+		if(x >= x_pos) {
+			int distance = x_pos - x;
+			chase(x);
+			diagonal(-(int)Math.signum(distance), 1);
+		}
+		
 	}
 
 }
