@@ -33,6 +33,8 @@
       private Image dbImage;
       private Graphics dbg;
       private Image jetImage, city;
+      
+      public Image PS0,PS1,PS2;
    
        public void init()
       {
@@ -40,11 +42,15 @@
          width = getWidth();
          height = getHeight();
          
+         PS0 =Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white);
+         PS1 =Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_running.gif"),new Color(0).white);
+         PS2 =Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_jumping.gif"),new Color(0).white);
+      
          buildingA= new Building(0, 410);
          buildingA.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "rooftop.gif"),new Color(0).black));
          EArray.add(buildingA);
       	
-         player = new Player(width/2, 400);
+         player = new Player(width/2, 200);
          player.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white));
          EArray.add(player);
          
@@ -131,10 +137,12 @@
          if(key == Event.LEFT)
          {
             playerMoveLeft = true;
+            player.setImage(PS1);
          }
          else if(key == Event.RIGHT)
          {
             playerMoveRight = true;
+            player.setImage(PS1);
          }
          else if(key == Event.UP)
          {
@@ -173,9 +181,11 @@
          if(key == Event.LEFT)
          {
             playerMoveLeft = false;
+             player.setImage(PS0);
          }
          else if(key == Event.RIGHT)
          {
+         	player.setImage(PS0);
             playerMoveRight = false;
          }
       
@@ -202,7 +212,7 @@
          g.drawImage(city, WIDTH+distanceMoved, 0, WIDTH, HEIGHT, this );
          g.drawImage(city, distanceMoved, 0, WIDTH, HEIGHT, this );
       
-
+      
       
       // draw player
       //player.drawPlayer(g, jetImage);
