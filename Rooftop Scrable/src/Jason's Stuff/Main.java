@@ -44,8 +44,8 @@
          resize(WIDTH, HEIGHT);
          width = getWidth();
          height = getHeight();
-         player = new Player(width/2, height/2);
-         player.setImage(getImage(getDocumentBase(), "megagirl_standing.gif"));
+        player = new Player(width/2, height/2);
+         player.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white));
          enemy = new BirdEnemy[1];
          for(int i = 0; i < 1;i++) {
         	 enemy[0] = new BirdEnemy(127, 117);
