@@ -14,6 +14,7 @@
       private int width;
       private int height;
       private Player player;
+      private Building buildingA;
       private BirdEnemy[] enemy;
       private Shot[] shots;
       private ArrayList<Entity> EArray = new ArrayList<Entity>();
@@ -38,6 +39,11 @@
          resize(WIDTH, HEIGHT);
          width = getWidth();
          height = getHeight();
+         
+         buildingA= new Building(0, 410);
+         buildingA.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "rooftop.gif"),new Color(0).black));
+         EArray.add(buildingA);
+      	
          player = new Player(width/2, 400);
          player.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white));
          EArray.add(player);
@@ -87,7 +93,7 @@
                
                }
                
-            	checkCollisions();	
+               checkCollisions();	
             }
          
          // move player
@@ -132,7 +138,7 @@
          }
          else if(key == Event.UP)
          {
-        	 player.jump();
+            player.jump();
          }
          else if(key == 32 )//Spacebar
          {
@@ -207,9 +213,11 @@
       
       // draw player
       //player.drawPlayer(g, jetImage);
-         g.drawImage(player.getImage(), player.getX()-26, player.getY()-35, this );
-         for(Enemy e : enemy) {
-            e.draw(g);
+      
+      
+      
+         for(Entity e : EArray) {
+            g.drawImage(e.getImage(), e.getX(), e.getY(), this );
          }
          drawUI(g);
       
