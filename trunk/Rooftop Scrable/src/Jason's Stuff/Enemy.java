@@ -5,7 +5,8 @@ public class Enemy
 {
       private int x_pos;
       private int y_pos;
-      
+      private int speed = 1;
+      boolean diagonal = true;
       // size of the enemy
       private static final int RADIS = 30;
 
@@ -32,11 +33,35 @@ public class Enemy
       }
       
       // move spaceship in x - direction
-      public void moveY(int speed)
+      public void moveY()
       {
             y_pos += speed;
       }
 
+      public void chase(int x) {
+    	  	if(x < x_pos) {
+    	  		x_pos -= speed;
+    	  	}else if (x > x_pos) {
+    	  		x_pos += speed;
+    	  	}
+      }
+      
+      public void flee(int x) {
+    	  if(x > x_pos) {
+  	  			x_pos -= speed;
+  	  		}else if (x < x_pos) {
+  	  			x_pos += speed;
+  	  	  }
+      }
+      
+      public void diagonal(int vertical, int horizontal) {
+    	  if(diagonal) {
+  	  			x_pos += speed  * Math.signum(horizontal);
+  	  		}else  {
+  	  			y_pos += speed * Math.signum(vertical);
+  	  	  }
+    	  diagonal = !diagonal;
+      }
       // generate a shot at the current position of the spaceship
       // and return this shot to the calling method
       public Shot generateShot()

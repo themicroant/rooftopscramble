@@ -30,6 +30,7 @@
    
        public void init()
       {
+    	 resize(WIDTH, HEIGHT);
          width = getWidth();
          height = getHeight();
          player = new Player(width/2, height/2);
@@ -110,7 +111,8 @@
                {
                // do nothing
                }
-         
+                enemy.chase(player.getX());
+                
          // repaint applet
             repaint();
          
