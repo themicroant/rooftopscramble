@@ -3,17 +3,17 @@ import java.awt.Color;
 
 public abstract class Enemy extends Entity
 {
-      private int x_pos;
-      private int y_pos;
-      private int speed = 1;
+       private int speed = 1;
       boolean diagonal = true;
       // size of the enemy
       private static final int RADIS = 30;
-
-      public Enemy(int x, int y)
+   
+       public Enemy(int x, int y)
       {
-            x_pos = x;
-            y_pos = y;
+         x_pos = x;
+         y_pos = y;
+         width = 45;
+         height = 45;
       }
       
       public int getXPos()

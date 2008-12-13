@@ -1,6 +1,7 @@
    import java.applet.*;
    import java.awt.*;
    import java.awt.event.*;
+   import java.util.*;
 
 
     public class Main extends Applet implements Runnable
@@ -15,6 +16,7 @@
       private Player player;
       private BirdEnemy[] enemy;
       private Shot[] shots;
+      private ArrayList<Entity> EArray = new ArrayList<Entity>();
       private int distanceMoved = 0;
       private final int WIDTH = 640;
       private final int HEIGHT = 480;
@@ -44,11 +46,14 @@
          resize(WIDTH, HEIGHT);
          width = getWidth();
          height = getHeight();
-        player = new Player(width/2, height/2);
+         player = new Player(width/2, height/2);
          player.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white));
+         EArray.add(player);
+         
          enemy = new BirdEnemy[1];
          for(int i = 0; i < 1;i++) {
-        	 enemy[0] = new BirdEnemy(127, 117);
+            enemy[i] = new BirdEnemy(127, 117);
+            EArray.add(enemy[i]);
          }
          shots = new Shot[5];
          city = getImage( getDocumentBase(), "city.JPG" );		
@@ -77,26 +82,28 @@
       
          while (thread != null)
          {
-         // do operations on shots in shots array
             for(int i=0; i<shots.length; i++)
             {
                if(shots[i] != null)
                {
-               // move shot
                   shots[i].moveShot(-SHOT_SPEED);
                
-               // test if shot is out
                   if(shots[i].getYPos() < 0)
                   {
-                  // remove shot from array
                      shots[i] = null;
                   } 
                
-               // other operations
-               // ...
-               // test for collisions with enemies
-               // ...
                }
+               
+            	
+            	
+            	
+            	
+            	
+            	
+            	
+            	
+            	
             }
          
          
@@ -127,9 +134,9 @@
                // do nothing
                }
                 
-               for(Enemy e : enemy) {
-            	   e.move(player.getX(), player.getY());
-               }
+            for(Enemy e : enemy) {
+               e.move(player.getX(), player.getY());
+            }
                 
          // repaint applet
             repaint();
@@ -139,46 +146,46 @@
       }
    
        public boolean keyDown(Event e, int key)
-       {
-          if(key == Event.LEFT)
-          {
-             playerMoveLeft = true;
-          }
-          else if(key == Event.RIGHT)
-          {
-             playerMoveRight = true;
-          }
-          else if(key == 32 )//Spacebar
-          {
+      {
+         if(key == Event.LEFT)
+         {
+            playerMoveLeft = true;
+         }
+         else if(key == Event.RIGHT)
+         {
+            playerMoveRight = true;
+         }
+         else if(key == 32 )//Spacebar
+         {
           // generate new shot and add it to shots array
-             for(int i=0; i<shots.length; i++)
-             {
-                if(shots[i] == null)
-                {
-                   shots[i] = player.generateShot();
-                   break;
-                }
-             }
-          }
-          else if(key == 49)// 1
-          {
-             player.setWeap(1);
-          }
-          else if(key == 50)// 2
-          {
-         	 player.setWeap(2);
-          }
-          else if(key == 51)// 3
-          {
-         	 player.setWeap(3);
-          }
-          else
-          {
-         	 errString = key + "";
-          }
+            for(int i=0; i<shots.length; i++)
+            {
+               if(shots[i] == null)
+               {
+                  shots[i] = player.generateShot();
+                  break;
+               }
+            }
+         }
+         else if(key == 49)// 1
+         {
+            player.setWeap(1);
+         }
+         else if(key == 50)// 2
+         {
+            player.setWeap(2);
+         }
+         else if(key == 51)// 3
+         {
+            player.setWeap(3);
+         }
+         else
+         {
+            errString = key + "";
+         }
        
-          return true;
-       }
+         return true;
+      }
    
        public boolean keyUp(Event e, int key)
       {
@@ -227,7 +234,7 @@
       //player.drawPlayer(g, jetImage);
          g.drawImage(player.getImage(), player.getX()-26, player.getY()-35, this );
          for(Enemy e : enemy) {
-        	 e.draw(g);
+            e.draw(g);
          }
          drawUI(g);
       
@@ -235,8 +242,8 @@
          distanceMoved=distanceMoved%WIDTH;
          
          if(test){
-        	 g.setColor(Color.RED);
-        	 g.drawChars(errString.toCharArray(),0,errString.length(),0,100);
+            g.setColor(Color.RED);
+            g.drawChars(errString.toCharArray(),0,errString.length(),0,100);
          }
       }
        
@@ -255,4 +262,25 @@
       
       }
    	
+   	
+       public void checkCollisions() {
+         Rectangle playerBounds = player.getBounds();
+         for (int i = 0; i < EArray.size(); i++) {
+            Entity a1 = EArray.get(i);
+            Rectangle r1 = a1.getBounds();
+            if (r1.intersects(playerBounds)) {
+               player.collision(a1);
+               a1.collision(player);
+            }
+            for (int j = i+1; j < EArray.size(); j++) {
+               Entity a2 = EArray.get(j);
+               Rectangle r2 = a2.getBounds();
+               if (r1.intersects(r2)) {
+                  a1.collision(a2);
+                  a2.collision(a1);
+               }
+            }
+         }
+      }
+   
    }
