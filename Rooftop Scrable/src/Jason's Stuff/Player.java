@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 //import java.awt.Graphics;
 //import java.awt.Image;
 
@@ -28,42 +30,34 @@ public class Player extends Entity
     	  return y_pos;
       }
       
-      public String getLifeText()
-      {
+      public String getLifeText() {
     	  return "LIFE " + life + "/" + LIFE_MAX;
       }
       
-      public String getWeapText()
-      {
+      public String getWeapText()  {
     	  return "Gun# " + weapNum;
       }
       
-      public void setWeap(int weapNum)
-      {
+      public void setWeap(int weapNum) {
     	  this.weapNum = weapNum;
       }
 
       // move spaceship in x - direction
-      public void moveX(int speed)
-      {
+      public void moveX(int speed) {
     	  x_pos += speed;
       }
       
       // move spaceship in x - direction
-      public void moveY(int speed)
-      {
+      public void moveY(int speed) {
             y_pos += speed;
       }
 
       // generate a shot at the current position of the spaceship
       // and return this shot to the calling method
-      public Shot generateShot()
-      {
+      public Shot generateShot() {
             Shot shot = new Shot(x_pos, y_pos);
-
             return shot;
       }
-	
 
       // draw the player
       //public void drawPlayer(Graphics g, Image jet)
