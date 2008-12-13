@@ -26,8 +26,8 @@
       private int PLAYER_SPEED = 3;
    
    // move flags
-      private boolean playerMoveLeft;
-      private boolean playerMoveRight;
+      private boolean LEFT;
+      private boolean RIGHT;
    
    // double buffering
       private Image dbImage;
@@ -102,6 +102,30 @@
                checkCollisions();	
             }
          
+            if(LEFT){
+            
+               for(Entity EN : EArray) {
+                  if(!(EN instanceof Player))
+                     EN.moveX(PLAYER_SPEED);
+               }
+               player.setImage(PS1);
+            }
+            else{
+               player.setImage(PS0);
+            }
+         
+            if(RIGHT){
+               for(Entity EN : EArray) {
+                  if(!(EN instanceof Player))
+                     EN.moveX(-PLAYER_SPEED);
+               }
+               player.setImage(PS1);
+            }
+            else{
+               player.setImage(PS0);
+            }
+         
+         
          
             try
             {
@@ -125,23 +149,11 @@
    
        public boolean keyDown(Event e, int key)
       {
-         if(key == Event.LEFT)
-         {
-            for(Entity EN : EArray) {
-               if(!(EN instanceof Player))
-               EN.moveX(-PLAYER_SPEED);
-            }
-         	
-            player.setImage(PS1);
+         if(key == Event.LEFT){
+            LEFT=true;
          }
-         else if(key == Event.RIGHT)
-         {            
-            for(Entity EN : EArray) {
-            if(!(EN instanceof Player))
-               EN.moveX(PLAYER_SPEED);
-            }
-         	
-            player.setImage(PS1);
+         else if(key == Event.RIGHT){            
+            RIGHT=true;
          }
          else if(key == Event.UP)
          {
@@ -179,13 +191,11 @@
       {
          if(key == Event.LEFT)
          {
-            playerMoveLeft = false;
-            player.setImage(PS0);
+            LEFT=false;
          }
          else if(key == Event.RIGHT)
          {
-            player.setImage(PS0);
-            playerMoveRight = false;
+            RIGHT=false;
          }
       
          return true;
