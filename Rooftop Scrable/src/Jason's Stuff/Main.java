@@ -102,15 +102,6 @@
                checkCollisions();	
             }
          
-         // move player
-            if(playerMoveLeft && player.getX() > 0)
-            {		
-               player.moveX(-PLAYER_SPEED);
-            }
-            else if(playerMoveRight && player.getX() < width)
-            {
-               player.moveX(PLAYER_SPEED);
-            }
          
             try
             {
@@ -136,12 +127,18 @@
       {
          if(key == Event.LEFT)
          {
-            playerMoveLeft = true;
+            for(Entity EN : EArray) {
+               EN.moveX(-PLAYER_SPEED);
+            }
+         	
             player.setImage(PS1);
          }
          else if(key == Event.RIGHT)
-         {
-            playerMoveRight = true;
+         {            
+            for(Entity EN : EArray) {
+               EN.moveX(PLAYER_SPEED);
+            }
+         	
             player.setImage(PS1);
          }
          else if(key == Event.UP)
@@ -181,11 +178,11 @@
          if(key == Event.LEFT)
          {
             playerMoveLeft = false;
-             player.setImage(PS0);
+            player.setImage(PS0);
          }
          else if(key == Event.RIGHT)
          {
-         	player.setImage(PS0);
+            player.setImage(PS0);
             playerMoveRight = false;
          }
       
