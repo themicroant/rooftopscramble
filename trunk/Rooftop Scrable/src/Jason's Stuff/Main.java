@@ -202,14 +202,7 @@
          g.drawImage(city, WIDTH+distanceMoved, 0, WIDTH, HEIGHT, this );
          g.drawImage(city, distanceMoved, 0, WIDTH, HEIGHT, this );
       
-      // draw shots
-         for(int i=0; i<shots.length; i++)
-         {
-            if(shots[i] != null)
-            {
-               shots[i].drawShot(g);
-            }
-         }
+
       
       // draw player
       //player.drawPlayer(g, jetImage);
@@ -219,6 +212,17 @@
          for(Entity e : EArray) {
             g.drawImage(e.getImage(), e.getX(), e.getY(), this );
          }
+         
+         // draw shots
+         for(int i=0; i<shots.length; i++)
+         {
+            if(shots[i] != null)
+            {
+               shots[i].drawShot(g);
+            }
+         }
+         
+         
          drawUI(g);
       
          distanceMoved--;
