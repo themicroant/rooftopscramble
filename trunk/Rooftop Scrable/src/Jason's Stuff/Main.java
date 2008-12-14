@@ -15,6 +15,8 @@
       private int height;
       private Player player;
       private Building buildingA;
+      private Building buildingB;
+      private Building buildingC;
       private BirdEnemy[] enemy;
       private Shot[] shots;
       private ArrayList<Entity> EArray = new ArrayList<Entity>();
@@ -51,6 +53,14 @@
          buildingA= new Building(0, 410);
          buildingA.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "rooftop.gif"),new Color(0).black));
          EArray.add(buildingA);
+         
+         buildingB= new Building(-550, 410);
+         buildingB.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "rooftop.gif"),new Color(0).black));
+         EArray.add(buildingB);
+         
+         buildingC= new Building(550, 410);
+         buildingC.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "rooftop.gif"),new Color(0).black));
+         EArray.add(buildingC);
       	
          player = new Player(width/2, 200);
          player.setImage(Transparency.makeColorTransparent(getImage(getDocumentBase(), "megagirl_standing.gif"),new Color(0).white));
@@ -124,7 +134,7 @@
                player.moveY(2);
             }
             
-            if(player.getFalls() > 0)
+            if(player.isJumping())
             {
             	player.tick();
             	player.moveY(-4);
