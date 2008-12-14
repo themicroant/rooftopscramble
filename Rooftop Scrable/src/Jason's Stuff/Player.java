@@ -6,6 +6,7 @@ public class Player extends Entity
 	private int weapNum;
 	
 	private int ticksLeft;
+	private boolean jumping = false;
 
 	public int PSTATE = 0;
 
@@ -27,8 +28,8 @@ public class Player extends Entity
 		ticksLeft = 0;
 	}
 	
-	public int getFalls(){
-		return ticksLeft;
+	public boolean isJumping(){
+		return jumping;
 	}
 	
 	public int getLife()
@@ -62,14 +63,27 @@ public class Player extends Entity
 
 	public void jump()
 	{
-		if(ticksLeft <= 0)
+		if(!jumping)
 		{
+			jumping = true;
 			ticksLeft = 25;
 		}
 	}
 	
+	public void setTicks( int ticks)
+	{
+		ticksLeft = ticks;
+	}
+	
 	public void tick(){
-		ticksLeft -= 1;
+		if( ticksLeft > 0 )
+		{
+			ticksLeft -= 1;
+		}
+		else
+		{
+			jumping = false;
+		}
 	}
 
 	// generate a shot at the current position of the spaceship
