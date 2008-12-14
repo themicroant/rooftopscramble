@@ -206,8 +206,9 @@
             {
                if(shots[i] == null)
                {
-                  shots[i] = player.generateShot();
-            	   EArray.add(player.generateShot());
+            	   Shot tempShot = player.generateShot();
+                  shots[i] = tempShot;
+            	   EArray.add(tempShot);
                   
                   break;
                }
@@ -268,7 +269,7 @@
    
        public void paint (Graphics g)
       {    
-    	   if( player.getLife() == 0)
+    	   if( player.getLife() == 0 || player.getY() > 480)
     	   {
     		   gameState = 2;
     	   }
