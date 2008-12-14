@@ -197,6 +197,8 @@
                if(shots[i] == null)
                {
                   shots[i] = player.generateShot();
+            	   EArray.add(player.generateShot());
+                  
                   break;
                }
             }

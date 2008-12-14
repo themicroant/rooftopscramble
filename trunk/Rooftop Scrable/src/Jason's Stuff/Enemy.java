@@ -7,6 +7,7 @@ public abstract class Enemy extends Entity
       boolean diagonal = true;
       // size of the enemy
       private static final int RADIS = 30;
+      protected int life;
    
        public Enemy(int x, int y)
       {
@@ -14,6 +15,7 @@ public abstract class Enemy extends Entity
          y_pos = y;
          width = 45;
          height = 45;
+         life = 1;
       }
       
       public int getXPos()
@@ -76,6 +78,19 @@ public abstract class Enemy extends Entity
 		g.setColor(Color.RED);
    	  	g.fillRect(x_pos-(RADIS/2), y_pos-(RADIS/2), RADIS, RADIS);	
 	  }
+	  
+		public void takeDamage(int damage)
+		{
+			life -= damage;
+			
+			if (life <= 0) {
+				life = 0;
+				this.setImage(null);
+				x_pos = -100;
+				y_pos = -100;
+			}
+
+		}
 
 	
 } 
