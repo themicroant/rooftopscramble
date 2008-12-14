@@ -55,8 +55,20 @@
    
        public void collision(Entity a)
       {
-         if (this instanceof Player && a instanceof Building)
-            System.out.println("HIT");
+         if (this instanceof Player && a instanceof Building){
+           // System.out.println("Player hit bldg");
+         }
+         if (this instanceof Player && a instanceof Enemy)
+             ((Player)this).takeDamage(1);
+         if (this instanceof Player && a instanceof Enemy)
+             ((Player)this).takeDamage(1);
+         //if (this instanceof Player && a instanceof Shot)
+          //   ((Player)this).takeDamage(1);
+         if (this instanceof Enemy && a instanceof Shot) {
+             ((Enemy)this).takeDamage(1);
+             System.out.println("Enemy hit shot");
+         }
+
             
       }
    
