@@ -86,7 +86,7 @@
        public void run ()
       {
          Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
-      
+               
          while (thread != null)
          {
             for(int i=0; i<shots.length; i++)
@@ -120,8 +120,17 @@
             }
                      
             if(fall)
-               player.moveY(1);
-         
+            {
+               player.moveY(2);
+            }
+            
+            if(player.getFalls() > 0)
+            {
+            	player.tick();
+            	player.moveY(-4);
+               
+            }
+            
          
             if(LEFT){
             
