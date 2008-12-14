@@ -302,11 +302,10 @@
     		   g.setColor(Color.BLACK);
     		   g.fillRect(0, 0, WIDTH, HEIGHT);
     		   
-    		   g.setColor(Color.WHITE);
     		   String msg = "GAME OVER";
-    		   g.drawChars(msg.toCharArray(), 0, msg.length(), 300, 200);
-    		   
-    		   
+    		   g.setFont(new Font("Arial", Font.BOLD, 38));
+    		   g.setColor(Color.WHITE);
+    		   g.drawChars(msg.toCharArray(), 0, msg.length(), 200, 200);
     	   }
       }
        
